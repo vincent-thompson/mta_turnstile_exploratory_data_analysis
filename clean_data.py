@@ -49,19 +49,14 @@ def clean_data(df):
     #Create new column to differentiate stations serving different subway lines but with identical names
     df_sorted['station_unique'] = df_sorted['STATION'] + '-' + df_sorted['LINENAME']
     
-<<<<<<< HEAD
-
-=======
     
     ### Merges LATITUDE / LONGITUDE data
     
->>>>>>> 7a9779be430cde22571d36fd3d807ac4d91f40fb
     # merges with latitude and longitude data, providing three new columns - lat, lng and location_string (string w coordinates)
     github_df = pd.read_csv("https://raw.githubusercontent.com/dirtylittledirtbike/mta_data/master/location_by_remote_unit.csv")
     new_df = pd.merge(df_sorted, github_df, on='UNIT', how='left') 
     
     # based on missing coordinates for PATH stations, we added lat / lng pairs for each PATH station
-<<<<<<< HEAD
     nan_stations = ('HARRISON', 'JOURNAL SQUARE', 'GROVE STREET', 'EXCHANGE PLACE', 'PAVONIA/NEWPORT', 'CHRISTOPHER ST',
                     '9TH STREET', '14TH STREET', 'TWENTY THIRD ST', 'THIRTY ST', 'LACKAWANNA', 'THIRTY THIRD ST', 
                     'PATH WTC 2', 'PATH NEW WTC','34 ST-HUDSON YD')
@@ -69,7 +64,6 @@ def clean_data(df):
                40.7126, 40.7126, 40.7550]
     nan_lng = [-74.1557, -74.0627, -74.0431, -74.0329, -74.0348, -74.0071, -73.9988, -73.9969, -73.9929, -73.9882, 
                -74.0275, -73.9882, -74.0099, -74.0099, -74.0010]
-=======
     nan_stations = ('HARRISON','JOURNAL SQUARE','GROVE STREET','EXCHANGE PLACE','PAVONIA/NEWPORT','CHRISTOPHER ST',
                     '9TH STREET','14TH STREET','TWENTY THIRD ST','THIRTY ST','LACKAWANNA','THIRTY THIRD ST', 
                     'PATH WTC 2','PATH NEW WTC','34 ST-HUDSON YD')
@@ -77,7 +71,6 @@ def clean_data(df):
                40.7126,40.7126,40.7550]
     nan_lng = [-74.1557,-72.0627,-74.0431,-74.0329,-74.0348,-74.0071,-73.9988,-73.9969,-73.9929,-73.9882, 
                -74.0275,-73.9882,-74.0099,-74.0099,-74.0010]
->>>>>>> 7a9779be430cde22571d36fd3d807ac4d91f40fb
     coordinate_list=[]
 
     for i in range(0, len(nan_lat)):
@@ -96,7 +89,3 @@ def clean_data(df):
                   ['lat', 'lng', 'location_string']] = 40.6895, -74.1745, '40.6895, -74.1745'
     
     return new_df
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a9779be430cde22571d36fd3d807ac4d91f40fb
