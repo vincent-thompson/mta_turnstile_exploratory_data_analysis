@@ -52,7 +52,7 @@ def clean_data(df):
     df_sorted['time_round']=df_sorted['time_round'].dt.round('H').dt.hour
     
     # created new column turnstile_turns with total turnstile interactions per turnstile
-    df_sorted['turnstile_turns'] = df_sorted.entries_diff + df_sorted.exits_diff
+    df_sorted['total_turns'] = df_sorted.entries_diff + df_sorted.exits_diff
 
     # replaces NaN values with mean for entries_diff and exits_diff
     df_sorted.entries_diff = df_sorted.entries_diff.fillna(df_sorted.entries_diff.mean())
