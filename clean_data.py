@@ -64,9 +64,10 @@ def clean_data(df):
         return weekday_key[x]
     df_sorted['day_of_week'] = df_sorted.converted_time.dt.dayofweek.apply(get_weekday)
     
-    # Create new column to differentiate stations serving different subway lines but with identical names
+    #Create new column to differentiate stations serving different subway lines but with identical names
     df_sorted['station_unique'] = df_sorted['STATION'] + '-' + df_sorted['LINENAME']
     
+<<<<<<< HEAD
     # merges with latitude and longitude data, providing three new columns - lat, lng and location_string (string w coordinates)
     github_df = pd.read_csv("https://raw.githubusercontent.com/dirtylittledirtbike/mta_data/master/location_by_remote_unit.csv")
     new_df = pd.merge(df_sorted, github_df, on='UNIT', how='left') 
@@ -97,3 +98,6 @@ def clean_data(df):
                   ['lat', 'lng', 'location_string']] = 40.6895, -74.1745, '40.6895, -74.1745'
     
     return new_df
+=======
+    return df_sorted
+>>>>>>> d78b28a879df86bf66af0139a3dccea25ecd0378
