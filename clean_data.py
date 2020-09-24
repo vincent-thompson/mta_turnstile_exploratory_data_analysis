@@ -64,13 +64,6 @@ def clean_data(df):
                40.7126, 40.7126, 40.7550]
     nan_lng = [-74.1557, -74.0627, -74.0431, -74.0329, -74.0348, -74.0071, -73.9988, -73.9969, -73.9929, -73.9882, 
                -74.0275, -73.9882, -74.0099, -74.0099, -74.0010]
-    nan_stations = ('HARRISON','JOURNAL SQUARE','GROVE STREET','EXCHANGE PLACE','PAVONIA/NEWPORT','CHRISTOPHER ST',
-                    '9TH STREET','14TH STREET','TWENTY THIRD ST','THIRTY ST','LACKAWANNA','THIRTY THIRD ST', 
-                    'PATH WTC 2','PATH NEW WTC','34 ST-HUDSON YD')
-    nan_lat = [40.7384,40.7236,40.7197,40.7162,40.7267,40.7331,40.7342,40.7374,40.7429,40.7491,40.7350,40.7491,
-               40.7126,40.7126,40.7550]
-    nan_lng = [-74.1557,-72.0627,-74.0431,-74.0329,-74.0348,-74.0071,-73.9988,-73.9969,-73.9929,-73.9882, 
-               -74.0275,-73.9882,-74.0099,-74.0099,-74.0010]
     coordinate_list=[]
 
     for i in range(0, len(nan_lat)):
