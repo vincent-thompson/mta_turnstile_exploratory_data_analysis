@@ -67,7 +67,7 @@ def clean_data(df):
     #Create new column to differentiate stations serving different subway lines but with identical names
     df_sorted['station_unique'] = df_sorted['STATION'] + '-' + df_sorted['LINENAME']
     
-<<<<<<< HEAD
+
     # merges with latitude and longitude data, providing three new columns - lat, lng and location_string (string w coordinates)
     github_df = pd.read_csv("https://raw.githubusercontent.com/dirtylittledirtbike/mta_data/master/location_by_remote_unit.csv")
     new_df = pd.merge(df_sorted, github_df, on='UNIT', how='left') 
@@ -76,14 +76,14 @@ def clean_data(df):
     nan_stations = ('HARRISON', 'JOURNAL SQUARE', 'GROVE STREET', 'EXCHANGE PLACE', 'PAVONIA/NEWPORT', 'CHRISTOPHER ST',
                     '9TH STREET', '14TH STREET', 'TWENTY THIRD ST', 'THIRTY ST', 'LACKAWANNA', 'THIRTY THIRD ST', 
                     'PATH WTC 2', 'PATH NEW WTC','34 ST-HUDSON YD')
-    nan_lat = [40.7384, 40.7236, 40.7197, 40.7162, 40.7267, 40.7331, 40.7342, 40.7374, 40.7429, 40.7491, 40.7350, 40.7491,
+    nan_lat = [40.7384, 40.7326, 40.7197, 40.7162, 40.7267, 40.7331, 40.7342, 40.7374, 40.7429, 40.7491, 40.7350, 40.7491,
                40.7126, 40.7126, 40.7550]
-    nan_lng = [-74.1557, -72.0627, -74.0431, -74.0329, -74.0348, -74.0071, -73.9988, -73.9969, -73.9929, -73.9882, 
+    nan_lng = [-74.1557, -74.0627, -74.0431, -74.0329, -74.0348, -74.0071, -73.9988, -73.9969, -73.9929, -73.9882, 
                -74.0275, -73.9882, -74.0099, -74.0099, -74.0010]
     coordinate_list=[]
 
     for i in range(0, len(nan_lat)):
-        coordinates = str(nan_lat[i]) + ', ' + str(nan_lng[i])
+        coordinates = str(nan_lat[i]) + ',' + str(nan_lng[i])
         coordinate_list.append(coordinates)
         
     for i in range (0, len(nan_stations)):
@@ -98,6 +98,4 @@ def clean_data(df):
                   ['lat', 'lng', 'location_string']] = 40.6895, -74.1745, '40.6895, -74.1745'
     
     return new_df
-=======
-    return df_sorted
->>>>>>> d78b28a879df86bf66af0139a3dccea25ecd0378
+
