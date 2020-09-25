@@ -19,24 +19,23 @@ def clean_data(df):
     df_sorted['time_round']=pd.to_datetime(df['TIME'], format='%H:%M:%S')
     df_sorted['time_round']=df_sorted['time_round'].dt.round('H').dt.hour
     
-    ### time-specific ENTRIES / EXITS and total TURNSTILE_TURNS columns 
+    ### time-specific ENTRIES / EXITS and total TURNSTILE_TURNS columns, OUTLIERS discussion
     
     # creats a new column to represent number of turns per time period, as opposed to cumulative over full collection period
     turnstile_df = df_sorted.groupby('turnstiles')
     df_sorted['entries_diff'] = turnstile_df['ENTRIES'].diff()
     df_sorted['exits_diff'] = turnstile_df['EXITS'].diff()
     
-    # removes negative values (connected to audits and technological interferences)
-    df_sorted = df_sorted[df_sorted['entries_diff'].between(0, np.inf)]
-    df_sorted = df_sorted[df_sorted['exits_diff'].between(0, np.inf)]
-    
     # replaces NaN values with mean for entries_diff and exits_diff
     df_sorted.entries_diff = df_sorted.entries_diff.fillna(df_sorted.entries_diff.mean())
     df_sorted.exits_diff = df_sorted.exits_diff.fillna(df_sorted.exits_diff.mean())
     
-    # created new column turnstile_turns with total turnstile interactions per turnstile
+    # created new column turnstile_turns with total turnstile interactions per turnstile, and removed high and low outliers.
+    # In our abbreviated research time, standard outlier predictions (IQR, etc) were not sufficient in designating reliable outliers.
+    # Based on data from Pearson's mean coefficient, we saw the data was not siginificantly skewed by outliers, but we did remove
+    # outliers that could only be explained by technical error.
     df_sorted['total_turns'] = df_sorted.entries_diff + df_sorted.exits_diff
-    
+    df_sorted = df_sorted[df_sorted['total_turns'].between(0, 10000)]
 
     ### DAY_OF_WEEK column
     
