@@ -23,15 +23,15 @@ def get_data(week_nums):
     return dfs
 
 def clean_dfs(dfs):
-    from clean_data import clean_data
+    import clean_data as cld
+    clean_dfs = []
     for df in dfs:
-        clean_data(df)
-    return dfs
+        clean_dfs.append(cld.clean_data(df))
+    return clean_dfs
 
 def concat_dfs(dfs):
-    import pandas as pd
     df_sorted = pd.concat(dfs)
-    df_sorted['weekly_turns']= df_sorted['total_turns']/len(df_list)
+    df_sorted['weekly_turns']= df_sorted['total_turns']/len(dfs)
     return df_sorted
 
 def get_boroughs(df_sorted):
@@ -48,6 +48,7 @@ def get_boroughs(df_sorted):
     loc
     borough_set = set(['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island'])
     for i, l in enumerate(loc):
+        print(i)
         sub = str(geolocator.reverse(l))
         sub_split = sub.split(', ')
         station_borough = list(borough_set.intersection(sub_split))
@@ -56,6 +57,7 @@ def get_boroughs(df_sorted):
         if station_borough == []:
             station_borough = 'Unknown'
         df_sorted.location_string_copy.replace({l:station_borough}, inplace=True)
+        print(station_borough)
     df_sorted = df_sorted.rename(columns={'location_string_copy':'borough'})
     return df_sorted
         
