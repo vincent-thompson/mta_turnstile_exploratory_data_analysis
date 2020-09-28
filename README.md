@@ -6,7 +6,7 @@ ______
 
 ## Description
 
-Analyzing MTA Turnstile data to make a recommendation to WomenTechWomenYes about subway canvasing for a fall gala
+Analyzing MTA Turnstile data to make a recommendation to WomenTechWomenYes about subway canvassing for a fall gala
 
 _______
 
