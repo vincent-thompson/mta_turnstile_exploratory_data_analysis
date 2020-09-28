@@ -10,9 +10,18 @@ Analyzing MTA Turnstile data to make a recommendation to WomenTechWomenYes about
 
 _______
 
-## Data 
+## Data
 * MTA Turnstile data
 * MTA Station data
+
+______
+
+## Technologies
+* Pandas
+* Plotly
+* Matplotlib
+* GeoPy
+* NumPy
 
 
 ______
