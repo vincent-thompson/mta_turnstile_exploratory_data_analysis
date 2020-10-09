@@ -1,6 +1,9 @@
 # project-1
-Metis Project 1 - EDA
-Update
+Exploratory Data Analysis - [MTA Turnstile data](http://web.mta.info/developers/turnstile.html)
+
+**Blogs related to this project:**
+- Vinny Thompson: [Data Storytelling Made Simple](https://medium.com/@vinnythompson14/data-storytelling-made-simple-f662fd1b8578) 
+- Nick Wilders: [A Data Driven Perspective on the Notorious MTA](https://medium.com/@nawilders/a-data-driven-perspective-on-the-notorious-mta-c9554e3fa57f)
 
 ______
 
